@@ -10,13 +10,16 @@ module.exports = ({ strapi }) => ({
   ask: async (body) => {
     const parsed = JSON.parse(body);
     const { data } = parsed;
+
     if (!data.query || data.query.length < 5) {
       return;
     }
+
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ role: "user", content: data.query }],
       model: "gpt-3.5-turbo",
     });
+
     if (chatCompletion.choices.length > 0) {
       await strapi.entityService.create("plugin::responder.response", {
         data: {
@@ -25,6 +28,7 @@ module.exports = ({ strapi }) => ({
         },
       });
     }
+
     return chatCompletion;
   },
 
