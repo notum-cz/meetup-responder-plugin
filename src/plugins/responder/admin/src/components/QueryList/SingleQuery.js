@@ -1,13 +1,12 @@
 import {
   Accordion,
-  AccordionToggle,
-  IconButton,
   AccordionContent,
+  AccordionToggle,
   Box,
+  IconButton,
   Typography,
-  Button,
 } from "@strapi/design-system";
-import { Cross, Pencil, Trash } from "@strapi/icons";
+import { Trash } from "@strapi/icons";
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 import requestList from "../../api";
@@ -15,7 +14,7 @@ import requestList from "../../api";
 const SingleQuery = ({ query, response, id }) => {
   const [expanded, setExpanded] = React.useState(false);
   const queryClient = useQueryClient();
-  const { mutate } = useMutation(requestList.deleteResponse, {
+  const { mutate: deleteQuery } = useMutation(requestList.deleteResponse, {
     onSuccess: (_) => {
       queryClient.invalidateQueries("responses");
     },
@@ -31,7 +30,10 @@ const SingleQuery = ({ query, response, id }) => {
         title={query}
         description=""
         action={
-          <IconButton onClick={() => mutate(id)} icon={<Trash />}></IconButton>
+          <IconButton
+            onClick={() => deleteQuery(id)}
+            icon={<Trash />}
+          ></IconButton>
         }
       />
       <AccordionContent>

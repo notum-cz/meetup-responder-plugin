@@ -28,6 +28,7 @@ export const queryClient = new QueryClient();
 
 const HomePage = () => {
   const [showModal, setShowModal] = React.useState(false);
+
   const queryClient = useQueryClient();
   const { data, isLoading: queryLoading } = useQuery(
     "responses",

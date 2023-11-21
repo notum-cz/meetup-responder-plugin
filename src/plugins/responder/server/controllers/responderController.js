@@ -11,6 +11,7 @@ module.exports = ({ strapi }) => ({
       ctx.throw(500, err);
     }
   },
+
   async getAll(ctx) {
     try {
       ctx.body = await strapi
@@ -21,6 +22,7 @@ module.exports = ({ strapi }) => ({
       ctx.throw(500, err);
     }
   },
+
   async deleteById(ctx) {
     try {
       ctx.body = await strapi
