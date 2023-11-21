@@ -4,7 +4,7 @@ module.exports = {
     resolve: "./src/plugins/responder",
   },
   strapigpt: {
-    enabled: false,
+    enabled: true,
     resolve: "./src/plugins/strapigpt",
   },
 };

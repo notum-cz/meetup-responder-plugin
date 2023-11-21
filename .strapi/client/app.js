@@ -6,6 +6,7 @@ import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import responder from "../../src/plugins/responder/strapi-admin";
+import strapigpt from "../../src/plugins/strapigpt/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
@@ -14,5 +15,6 @@ renderAdmin(document.getElementById("strapi"), {
     i18n: i18N,
     "users-permissions": usersPermissions,
     responder: responder,
+    strapigpt: strapigpt,
   },
 });
